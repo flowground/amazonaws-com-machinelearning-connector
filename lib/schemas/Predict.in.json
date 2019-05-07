@@ -1,0 +1,80 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "MLModelId": {
+                    "description": "A unique identifier of the <code>MLModel</code>.",
+                    "maxLength": 64,
+                    "minLength": 1,
+                    "pattern": "[a-zA-Z0-9_.-]+",
+                    "type": "string"
+                },
+                "PredictEndpoint": {
+                    "maxLength": 2048,
+                    "pattern": "https://[a-zA-Z0-9-.]*\\.amazon(aws)?\\.com[/]?",
+                    "type": "string"
+                },
+                "Record": {
+                    "description": "A map of variable name-value pairs that represent an observation.",
+                    "items": {
+                        "properties": {
+                            "key": {
+                                "description": "The name of a variable. Currently it's used to specify the name of the target value, label, weight, and tags.",
+                                "type": "string"
+                            },
+                            "value": {
+                                "description": "The value of a variable. Currently it's used to specify values of the target value, weights, and tag variables and for filtering variable values.",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "MLModelId",
+                "Record",
+                "PredictEndpoint"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}
