@@ -20,7 +20,7 @@
                 "label": "Custom Server URL",
                 "viewClass": "TextFieldView"
             },
-            "hmac": {
+            "auth_hmac": {
                 "label": "Authorization (hmac)",
                 "viewClass": "TextFieldView",
                 "note": "Amazon Signature authorization v4"
@@ -38,7 +38,7 @@
     "actions": {
         "AddTags": {
             "main": "./lib/actions/AddTags.js",
-            "title": "Adds one or more tags to an object, up to a limit of 10. Each tag consists of a key and an optional value. If you add a tag using a key that is already associated with the ML object, <code>AddTags</code> updates the tag's value.",
+            "title": "AddTags",
             "description": "Adds one or more tags to an object, up to a limit of 10. Each tag consists of a key and an optional value. If you add a tag using a key that is already associated with the ML object, <code>AddTags</code> updates the tag's value.",
             "fields": {
                 "verbose": {
@@ -55,8 +55,8 @@
         },
         "CreateBatchPrediction": {
             "main": "./lib/actions/CreateBatchPrediction.js",
-            "title": "<p>Generates predictions for a group of observations. The observations to process exist in one or more data files referenced by a <code>DataSource</code>. This operation creates a new <code>BatchPrediction</code>, and uses an <code>MLModel</code> and the data files referenced by the <code>DataSource</code> as information sources. </p> <p><code>CreateBatchPrediction</code> is an asynchronous operation. In response to <code>CreateBatchPrediction</code>, Amazon Machine Learning (Amazon ML) immediately returns and sets the <code>BatchPrediction</code> status to <code>PENDING</code>. After the <code>BatchPrediction</code> completes, Amazon ML sets the status to <code>COMPLETED</code>. </p> <p>You can poll for status updates by using the <a>GetBatchPrediction</a> operation and checking the <code>Status</code> parameter of the result. After the <code>COMPLETED</code> status appears, the results are available in the location specified by the <code>OutputUri</code> parameter.</p>",
-            "description": "<p>Generates predictions for a group of observations. The observations to process exist in one or more data files referenced by a <code>DataSource</code>. This operation creates a new <code>BatchPrediction</code>, and uses an <code>MLModel</code> and the data files referenced by the <code>DataSource</code> as information sources. </p> <p><code>CreateBatchPrediction</code> is an asynchronous operation. In response to <code>CreateBatchPrediction</code>, Amazon Machine Learning (Amazon ML) immediately returns and sets the <code>BatchPrediction</code> status to <code>PENDING</code>. After the <code>BatchPrediction</code> completes, Amazon ML sets the status to <code>COMPLETED</code>. </p> <p>You can poll for status updates by using the <a>GetBatchPrediction</a> operation and checking the <code>Status</code> parameter of the result. After the <code>COMPLETED</code> status appears, the results are available in the location specified by the <code>OutputUri</code> parameter.</p>",
+            "title": "CreateBatchPrediction",
+            "description": "Generates predictions for a group of observations. The observations to process\nexist in one or more data files referenced by a DataSource. This operation\ncreates a new BatchPrediction, and uses an MLModel and the data files referenced\nby the DataSource as information sources. \n\nCreateBatchPrediction is an asynchronous operation. In response to \nCreateBatchPrediction, Amazon Machine Learning (Amazon ML) immediately returns\nand sets the BatchPrediction status to PENDING. After the BatchPrediction \ncompletes, Amazon ML sets the status to COMPLETED. \n\nYou can poll for status updates by using the GetBatchPrediction operation and\nchecking the Status parameter of the result. After the COMPLETED status appears,\nthe results are available in the location specified by the OutputUri parameter.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -72,8 +72,8 @@
         },
         "CreateDataSourceFromRDS": {
             "main": "./lib/actions/CreateDataSourceFromRDS.js",
-            "title": "<p>Creates a <code>DataSource</code> object from an <a href=\"http://aws.amazon.com/rds/\"> Amazon Relational Database Service</a> (Amazon RDS). A <code>DataSource</code> references data that can be used to perform <code>CreateMLModel</code>, <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code> operations.</p> <p><code>CreateDataSourceFromRDS</code> is an asynchronous operation. In response to <code>CreateDataSourceFromRDS</code>, Amazon Machine Learning (Amazon ML) immediately returns and sets the <code>DataSource</code> status to <code>PENDING</code>. After the <code>DataSource</code> is created and ready for use, Amazon ML sets the <code>Status</code> parameter to <code>COMPLETED</code>. <code>DataSource</code> in the <code>COMPLETED</code> or <code>PENDING</code> state can be used only to perform <code>&gt;CreateMLModel</code>&gt;, <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code> operations. </p> <p> If Amazon ML cannot accept the input source, it sets the <code>Status</code> parameter to <code>FAILED</code> and includes an error message in the <code>Message</code> attribute of the <code>GetDataSource</code> operation response. </p>",
-            "description": "<p>Creates a <code>DataSource</code> object from an <a href=\"http://aws.amazon.com/rds/\"> Amazon Relational Database Service</a> (Amazon RDS). A <code>DataSource</code> references data that can be used to perform <code>CreateMLModel</code>, <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code> operations.</p> <p><code>CreateDataSourceFromRDS</code> is an asynchronous operation. In response to <code>CreateDataSourceFromRDS</code>, Amazon Machine Learning (Amazon ML) immediately returns and sets the <code>DataSource</code> status to <code>PENDING</code>. After the <code>DataSource</code> is created and ready for use, Amazon ML sets the <code>Status</code> parameter to <code>COMPLETED</code>. <code>DataSource</code> in the <code>COMPLETED</code> or <code>PENDING</code> state can be used only to perform <code>&gt;CreateMLModel</code>&gt;, <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code> operations. </p> <p> If Amazon ML cannot accept the input source, it sets the <code>Status</code> parameter to <code>FAILED</code> and includes an error message in the <code>Message</code> attribute of the <code>GetDataSource</code> operation response. </p>",
+            "title": "CreateDataSourceFromRDS",
+            "description": "Creates a DataSource object from an Amazon Relational Database Service\n[http://aws.amazon.com/rds/] (Amazon RDS). A DataSource references data that can\nbe used to perform CreateMLModel, CreateEvaluation, or CreateBatchPrediction \noperations.\n\nCreateDataSourceFromRDS is an asynchronous operation. In response to \nCreateDataSourceFromRDS, Amazon Machine Learning (Amazon ML) immediately returns\nand sets the DataSource status to PENDING. After the DataSource is created and\nready for use, Amazon ML sets the Status parameter to COMPLETED. DataSource in\nthe COMPLETED or PENDING state can be used only to perform >CreateMLModel>, \nCreateEvaluation, or CreateBatchPrediction operations. \n\n If Amazon ML cannot accept the input source, it sets the Status parameter to \nFAILED and includes an error message in the Message attribute of the \nGetDataSource operation response.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -89,8 +89,8 @@
         },
         "CreateDataSourceFromRedshift": {
             "main": "./lib/actions/CreateDataSourceFromRedshift.js",
-            "title": "<p>Creates a <code>DataSource</code> from a database hosted on an Amazon Redshift cluster. A <code>DataSource</code> references data that can be used to perform either <code>CreateMLModel</code>, <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code> operations.</p> <p><code>CreateDataSourceFromRedshift</code> is an asynchronous operation. In response to <code>CreateDataSourceFromRedshift</code>, Amazon Machine Learning (Amazon ML) immediately returns and sets the <code>DataSource</code> status to <code>PENDING</code>. After the <code>DataSource</code> is created and ready for use, Amazon ML sets the <code>Status</code> parameter to <code>COMPLETED</code>. <code>DataSource</code> in <code>COMPLETED</code> or <code>PENDING</code> states can be used to perform only <code>CreateMLModel</code>, <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code> operations. </p> <p> If Amazon ML can't accept the input source, it sets the <code>Status</code> parameter to <code>FAILED</code> and includes an error message in the <code>Message</code> attribute of the <code>GetDataSource</code> operation response. </p> <p>The observations should be contained in the database hosted on an Amazon Redshift cluster and should be specified by a <code>SelectSqlQuery</code> query. Amazon ML executes an <code>Unload</code> command in Amazon Redshift to transfer the result set of the <code>SelectSqlQuery</code> query to <code>S3StagingLocation</code>.</p> <p>After the <code>DataSource</code> has been created, it's ready for use in evaluations and batch predictions. If you plan to use the <code>DataSource</code> to train an <code>MLModel</code>, the <code>DataSource</code> also requires a recipe. A recipe describes how each input variable will be used in training an <code>MLModel</code>. Will the variable be included or excluded from training? Will the variable be manipulated; for example, will it be combined with another variable or will it be split apart into word combinations? The recipe provides answers to these questions.</p> <?oxy_insert_start author=\"laurama\" timestamp=\"20160406T153842-0700\"><p>You can't change an existing datasource, but you can copy and modify the settings from an existing Amazon Redshift datasource to create a new datasource. To do so, call <code>GetDataSource</code> for an existing datasource and copy the values to a <code>CreateDataSource</code> call. Change the settings that you want to change and make sure that all required fields have the appropriate values.</p> <?oxy_insert_end>",
-            "description": "<p>Creates a <code>DataSource</code> from a database hosted on an Amazon Redshift cluster. A <code>DataSource</code> references data that can be used to perform either <code>CreateMLModel</code>, <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code> operations.</p> <p><code>CreateDataSourceFromRedshift</code> is an asynchronous operation. In response to <code>CreateDataSourceFromRedshift</code>, Amazon Machine Learning (Amazon ML) immediately returns and sets the <code>DataSource</code> status to <code>PENDING</code>. After the <code>DataSource</code> is created and ready for use, Amazon ML sets the <code>Status</code> parameter to <code>COMPLETED</code>. <code>DataSource</code> in <code>COMPLETED</code> or <code>PENDING</code> states can be used to perform only <code>CreateMLModel</code>, <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code> operations. </p> <p> If Amazon ML can't accept the input source, it sets the <code>Status</code> parameter to <code>FAILED</code> and includes an error message in the <code>Message</code> attribute of the <code>GetDataSource</code> operation response. </p> <p>The observations should be contained in the database hosted on an Amazon Redshift cluster and should be specified by a <code>SelectSqlQuery</code> query. Amazon ML executes an <code>Unload</code> command in Amazon Redshift to transfer the result set of the <code>SelectSqlQuery</code> query to <code>S3StagingLocation</code>.</p> <p>After the <code>DataSource</code> has been created, it's ready for use in evaluations and batch predictions. If you plan to use the <code>DataSource</code> to train an <code>MLModel</code>, the <code>DataSource</code> also requires a recipe. A recipe describes how each input variable will be used in training an <code>MLModel</code>. Will the variable be included or excluded from training? Will the variable be manipulated; for example, will it be combined with another variable or will it be split apart into word combinations? The recipe provides answers to these questions.</p> <?oxy_insert_start author=\"laurama\" timestamp=\"20160406T153842-0700\"><p>You can't change an existing datasource, but you can copy and modify the settings from an existing Amazon Redshift datasource to create a new datasource. To do so, call <code>GetDataSource</code> for an existing datasource and copy the values to a <code>CreateDataSource</code> call. Change the settings that you want to change and make sure that all required fields have the appropriate values.</p> <?oxy_insert_end>",
+            "title": "CreateDataSourceFromRedshift",
+            "description": "Creates a DataSource from a database hosted on an Amazon Redshift cluster. A \nDataSource references data that can be used to perform either CreateMLModel, \nCreateEvaluation, or CreateBatchPrediction operations.\n\nCreateDataSourceFromRedshift is an asynchronous operation. In response to \nCreateDataSourceFromRedshift, Amazon Machine Learning (Amazon ML) immediately\nreturns and sets the DataSource status to PENDING. After the DataSource is\ncreated and ready for use, Amazon ML sets the Status parameter to COMPLETED. \nDataSource in COMPLETED or PENDING states can be used to perform only \nCreateMLModel, CreateEvaluation, or CreateBatchPrediction operations. \n\n If Amazon ML can't accept the input source, it sets the Status parameter to \nFAILED and includes an error message in the Message attribute of the \nGetDataSource operation response. \n\nThe observations should be contained in the database hosted on an Amazon\nRedshift cluster and should be specified by a SelectSqlQuery query. Amazon ML\nexecutes an Unload command in Amazon Redshift to transfer the result set of the \nSelectSqlQuery query to S3StagingLocation.\n\nAfter the DataSource has been created, it's ready for use in evaluations and\nbatch predictions. If you plan to use the DataSource to train an MLModel, the \nDataSource also requires a recipe. A recipe describes how each input variable\nwill be used in training an MLModel. Will the variable be included or excluded\nfrom training? Will the variable be manipulated; for example, will it be\ncombined with another variable or will it be split apart into word combinations?\nThe recipe provides answers to these questions.\n\nYou can't change an existing datasource, but you can copy and modify the\nsettings from an existing Amazon Redshift datasource to create a new datasource.\nTo do so, call GetDataSource for an existing datasource and copy the values to a \nCreateDataSource call. Change the settings that you want to change and make sure\nthat all required fields have the appropriate values.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -106,8 +106,8 @@
         },
         "CreateDataSourceFromS3": {
             "main": "./lib/actions/CreateDataSourceFromS3.js",
-            "title": "<p>Creates a <code>DataSource</code> object. A <code>DataSource</code> references data that can be used to perform <code>CreateMLModel</code>, <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code> operations.</p> <p><code>CreateDataSourceFromS3</code> is an asynchronous operation. In response to <code>CreateDataSourceFromS3</code>, Amazon Machine Learning (Amazon ML) immediately returns and sets the <code>DataSource</code> status to <code>PENDING</code>. After the <code>DataSource</code> has been created and is ready for use, Amazon ML sets the <code>Status</code> parameter to <code>COMPLETED</code>. <code>DataSource</code> in the <code>COMPLETED</code> or <code>PENDING</code> state can be used to perform only <code>CreateMLModel</code>, <code>CreateEvaluation</code> or <code>CreateBatchPrediction</code> operations. </p> <p> If Amazon ML can't accept the input source, it sets the <code>Status</code> parameter to <code>FAILED</code> and includes an error message in the <code>Message</code> attribute of the <code>GetDataSource</code> operation response. </p> <p>The observation data used in a <code>DataSource</code> should be ready to use; that is, it should have a consistent structure, and missing data values should be kept to a minimum. The observation data must reside in one or more .csv files in an Amazon Simple Storage Service (Amazon S3) location, along with a schema that describes the data items by name and type. The same schema must be used for all of the data files referenced by the <code>DataSource</code>. </p> <p>After the <code>DataSource</code> has been created, it's ready to use in evaluations and batch predictions. If you plan to use the <code>DataSource</code> to train an <code>MLModel</code>, the <code>DataSource</code> also needs a recipe. A recipe describes how each input variable will be used in training an <code>MLModel</code>. Will the variable be included or excluded from training? Will the variable be manipulated; for example, will it be combined with another variable or will it be split apart into word combinations? The recipe provides answers to these questions.</p>",
-            "description": "<p>Creates a <code>DataSource</code> object. A <code>DataSource</code> references data that can be used to perform <code>CreateMLModel</code>, <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code> operations.</p> <p><code>CreateDataSourceFromS3</code> is an asynchronous operation. In response to <code>CreateDataSourceFromS3</code>, Amazon Machine Learning (Amazon ML) immediately returns and sets the <code>DataSource</code> status to <code>PENDING</code>. After the <code>DataSource</code> has been created and is ready for use, Amazon ML sets the <code>Status</code> parameter to <code>COMPLETED</code>. <code>DataSource</code> in the <code>COMPLETED</code> or <code>PENDING</code> state can be used to perform only <code>CreateMLModel</code>, <code>CreateEvaluation</code> or <code>CreateBatchPrediction</code> operations. </p> <p> If Amazon ML can't accept the input source, it sets the <code>Status</code> parameter to <code>FAILED</code> and includes an error message in the <code>Message</code> attribute of the <code>GetDataSource</code> operation response. </p> <p>The observation data used in a <code>DataSource</code> should be ready to use; that is, it should have a consistent structure, and missing data values should be kept to a minimum. The observation data must reside in one or more .csv files in an Amazon Simple Storage Service (Amazon S3) location, along with a schema that describes the data items by name and type. The same schema must be used for all of the data files referenced by the <code>DataSource</code>. </p> <p>After the <code>DataSource</code> has been created, it's ready to use in evaluations and batch predictions. If you plan to use the <code>DataSource</code> to train an <code>MLModel</code>, the <code>DataSource</code> also needs a recipe. A recipe describes how each input variable will be used in training an <code>MLModel</code>. Will the variable be included or excluded from training? Will the variable be manipulated; for example, will it be combined with another variable or will it be split apart into word combinations? The recipe provides answers to these questions.</p>",
+            "title": "CreateDataSourceFromS3",
+            "description": "Creates a DataSource object. A DataSource references data that can be used to\nperform CreateMLModel, CreateEvaluation, or CreateBatchPrediction operations.\n\nCreateDataSourceFromS3 is an asynchronous operation. In response to \nCreateDataSourceFromS3, Amazon Machine Learning (Amazon ML) immediately returns\nand sets the DataSource status to PENDING. After the DataSource has been created\nand is ready for use, Amazon ML sets the Status parameter to COMPLETED. \nDataSource in the COMPLETED or PENDING state can be used to perform only \nCreateMLModel, CreateEvaluation or CreateBatchPrediction operations. \n\n If Amazon ML can't accept the input source, it sets the Status parameter to \nFAILED and includes an error message in the Message attribute of the \nGetDataSource operation response. \n\nThe observation data used in a DataSource should be ready to use; that is, it\nshould have a consistent structure, and missing data values should be kept to a\nminimum. The observation data must reside in one or more .csv files in an Amazon\nSimple Storage Service (Amazon S3) location, along with a schema that describes\nthe data items by name and type. The same schema must be used for all of the\ndata files referenced by the DataSource. \n\nAfter the DataSource has been created, it's ready to use in evaluations and\nbatch predictions. If you plan to use the DataSource to train an MLModel, the \nDataSource also needs a recipe. A recipe describes how each input variable will\nbe used in training an MLModel. Will the variable be included or excluded from\ntraining? Will the variable be manipulated; for example, will it be combined\nwith another variable or will it be split apart into word combinations? The\nrecipe provides answers to these questions.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -123,8 +123,8 @@
         },
         "CreateEvaluation": {
             "main": "./lib/actions/CreateEvaluation.js",
-            "title": "<p>Creates a new <code>Evaluation</code> of an <code>MLModel</code>. An <code>MLModel</code> is evaluated on a set of observations associated to a <code>DataSource</code>. Like a <code>DataSource</code> for an <code>MLModel</code>, the <code>DataSource</code> for an <code>Evaluation</code> contains values for the <code>Target Variable</code>. The <code>Evaluation</code> compares the predicted result for each observation to the actual outcome and provides a summary so that you know how effective the <code>MLModel</code> functions on the test data. Evaluation generates a relevant performance metric, such as BinaryAUC, RegressionRMSE or MulticlassAvgFScore based on the corresponding <code>MLModelType</code>: <code>BINARY</code>, <code>REGRESSION</code> or <code>MULTICLASS</code>. </p> <p><code>CreateEvaluation</code> is an asynchronous operation. In response to <code>CreateEvaluation</code>, Amazon Machine Learning (Amazon ML) immediately returns and sets the evaluation status to <code>PENDING</code>. After the <code>Evaluation</code> is created and ready for use, Amazon ML sets the status to <code>COMPLETED</code>. </p> <p>You can use the <code>GetEvaluation</code> operation to check progress of the evaluation during the creation operation.</p>",
-            "description": "<p>Creates a new <code>Evaluation</code> of an <code>MLModel</code>. An <code>MLModel</code> is evaluated on a set of observations associated to a <code>DataSource</code>. Like a <code>DataSource</code> for an <code>MLModel</code>, the <code>DataSource</code> for an <code>Evaluation</code> contains values for the <code>Target Variable</code>. The <code>Evaluation</code> compares the predicted result for each observation to the actual outcome and provides a summary so that you know how effective the <code>MLModel</code> functions on the test data. Evaluation generates a relevant performance metric, such as BinaryAUC, RegressionRMSE or MulticlassAvgFScore based on the corresponding <code>MLModelType</code>: <code>BINARY</code>, <code>REGRESSION</code> or <code>MULTICLASS</code>. </p> <p><code>CreateEvaluation</code> is an asynchronous operation. In response to <code>CreateEvaluation</code>, Amazon Machine Learning (Amazon ML) immediately returns and sets the evaluation status to <code>PENDING</code>. After the <code>Evaluation</code> is created and ready for use, Amazon ML sets the status to <code>COMPLETED</code>. </p> <p>You can use the <code>GetEvaluation</code> operation to check progress of the evaluation during the creation operation.</p>",
+            "title": "CreateEvaluation",
+            "description": "Creates a new Evaluation of an MLModel. An MLModel is evaluated on a set of\nobservations associated to a DataSource. Like a DataSource for an MLModel, the \nDataSource for an Evaluation contains values for the Target Variable. The \nEvaluation compares the predicted result for each observation to the actual\noutcome and provides a summary so that you know how effective the MLModel \nfunctions on the test data. Evaluation generates a relevant performance metric,\nsuch as BinaryAUC, RegressionRMSE or MulticlassAvgFScore based on the\ncorresponding MLModelType: BINARY, REGRESSION or MULTICLASS. \n\nCreateEvaluation is an asynchronous operation. In response to CreateEvaluation,\nAmazon Machine Learning (Amazon ML) immediately returns and sets the evaluation\nstatus to PENDING. After the Evaluation is created and ready for use, Amazon ML\nsets the status to COMPLETED. \n\nYou can use the GetEvaluation operation to check progress of the evaluation\nduring the creation operation.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -140,8 +140,8 @@
         },
         "CreateMLModel": {
             "main": "./lib/actions/CreateMLModel.js",
-            "title": "<p>Creates a new <code>MLModel</code> using the <code>DataSource</code> and the recipe as information sources. </p> <p>An <code>MLModel</code> is nearly immutable. Users can update only the <code>MLModelName</code> and the <code>ScoreThreshold</code> in an <code>MLModel</code> without creating a new <code>MLModel</code>. </p> <p><code>CreateMLModel</code> is an asynchronous operation. In response to <code>CreateMLModel</code>, Amazon Machine Learning (Amazon ML) immediately returns and sets the <code>MLModel</code> status to <code>PENDING</code>. After the <code>MLModel</code> has been created and ready is for use, Amazon ML sets the status to <code>COMPLETED</code>. </p> <p>You can use the <code>GetMLModel</code> operation to check the progress of the <code>MLModel</code> during the creation operation.</p> <p> <code>CreateMLModel</code> requires a <code>DataSource</code> with computed statistics, which can be created by setting <code>ComputeStatistics</code> to <code>true</code> in <code>CreateDataSourceFromRDS</code>, <code>CreateDataSourceFromS3</code>, or <code>CreateDataSourceFromRedshift</code> operations. </p>",
-            "description": "<p>Creates a new <code>MLModel</code> using the <code>DataSource</code> and the recipe as information sources. </p> <p>An <code>MLModel</code> is nearly immutable. Users can update only the <code>MLModelName</code> and the <code>ScoreThreshold</code> in an <code>MLModel</code> without creating a new <code>MLModel</code>. </p> <p><code>CreateMLModel</code> is an asynchronous operation. In response to <code>CreateMLModel</code>, Amazon Machine Learning (Amazon ML) immediately returns and sets the <code>MLModel</code> status to <code>PENDING</code>. After the <code>MLModel</code> has been created and ready is for use, Amazon ML sets the status to <code>COMPLETED</code>. </p> <p>You can use the <code>GetMLModel</code> operation to check the progress of the <code>MLModel</code> during the creation operation.</p> <p> <code>CreateMLModel</code> requires a <code>DataSource</code> with computed statistics, which can be created by setting <code>ComputeStatistics</code> to <code>true</code> in <code>CreateDataSourceFromRDS</code>, <code>CreateDataSourceFromS3</code>, or <code>CreateDataSourceFromRedshift</code> operations. </p>",
+            "title": "CreateMLModel",
+            "description": "Creates a new MLModel using the DataSource and the recipe as information\nsources. \n\nAn MLModel is nearly immutable. Users can update only the MLModelName and the \nScoreThreshold in an MLModel without creating a new MLModel. \n\nCreateMLModel is an asynchronous operation. In response to CreateMLModel, Amazon\nMachine Learning (Amazon ML) immediately returns and sets the MLModel status to \nPENDING. After the MLModel has been created and ready is for use, Amazon ML sets\nthe status to COMPLETED. \n\nYou can use the GetMLModel operation to check the progress of the MLModel during\nthe creation operation.\n\n CreateMLModel requires a DataSource with computed statistics, which can be\ncreated by setting ComputeStatistics to true in CreateDataSourceFromRDS, \nCreateDataSourceFromS3, or CreateDataSourceFromRedshift operations.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -157,7 +157,7 @@
         },
         "CreateRealtimeEndpoint": {
             "main": "./lib/actions/CreateRealtimeEndpoint.js",
-            "title": "Creates a real-time endpoint for the <code>MLModel</code>. The endpoint contains the URI of the <code>MLModel</code>; that is, the location to send real-time prediction requests for the specified <code>MLModel</code>.",
+            "title": "CreateRealtimeEndpoint",
             "description": "Creates a real-time endpoint for the <code>MLModel</code>. The endpoint contains the URI of the <code>MLModel</code>; that is, the location to send real-time prediction requests for the specified <code>MLModel</code>.",
             "fields": {
                 "verbose": {
@@ -174,8 +174,8 @@
         },
         "DeleteBatchPrediction": {
             "main": "./lib/actions/DeleteBatchPrediction.js",
-            "title": "<p>Assigns the DELETED status to a <code>BatchPrediction</code>, rendering it unusable.</p> <p>After using the <code>DeleteBatchPrediction</code> operation, you can use the <a>GetBatchPrediction</a> operation to verify that the status of the <code>BatchPrediction</code> changed to DELETED.</p> <p><b>Caution:</b> The result of the <code>DeleteBatchPrediction</code> operation is irreversible.</p>",
-            "description": "<p>Assigns the DELETED status to a <code>BatchPrediction</code>, rendering it unusable.</p> <p>After using the <code>DeleteBatchPrediction</code> operation, you can use the <a>GetBatchPrediction</a> operation to verify that the status of the <code>BatchPrediction</code> changed to DELETED.</p> <p><b>Caution:</b> The result of the <code>DeleteBatchPrediction</code> operation is irreversible.</p>",
+            "title": "DeleteBatchPrediction",
+            "description": "Assigns the DELETED status to a BatchPrediction, rendering it unusable.\n\nAfter using the DeleteBatchPrediction operation, you can use the \nGetBatchPrediction operation to verify that the status of the BatchPrediction \nchanged to DELETED.\n\nCaution: The result of the DeleteBatchPrediction operation is irreversible.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -191,8 +191,8 @@
         },
         "DeleteDataSource": {
             "main": "./lib/actions/DeleteDataSource.js",
-            "title": "<p>Assigns the DELETED status to a <code>DataSource</code>, rendering it unusable.</p> <p>After using the <code>DeleteDataSource</code> operation, you can use the <a>GetDataSource</a> operation to verify that the status of the <code>DataSource</code> changed to DELETED.</p> <p><b>Caution:</b> The results of the <code>DeleteDataSource</code> operation are irreversible.</p>",
-            "description": "<p>Assigns the DELETED status to a <code>DataSource</code>, rendering it unusable.</p> <p>After using the <code>DeleteDataSource</code> operation, you can use the <a>GetDataSource</a> operation to verify that the status of the <code>DataSource</code> changed to DELETED.</p> <p><b>Caution:</b> The results of the <code>DeleteDataSource</code> operation are irreversible.</p>",
+            "title": "DeleteDataSource",
+            "description": "Assigns the DELETED status to a DataSource, rendering it unusable.\n\nAfter using the DeleteDataSource operation, you can use the GetDataSource \noperation to verify that the status of the DataSource changed to DELETED.\n\nCaution: The results of the DeleteDataSource operation are irreversible.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -208,8 +208,8 @@
         },
         "DeleteEvaluation": {
             "main": "./lib/actions/DeleteEvaluation.js",
-            "title": "<p>Assigns the <code>DELETED</code> status to an <code>Evaluation</code>, rendering it unusable.</p> <p>After invoking the <code>DeleteEvaluation</code> operation, you can use the <code>GetEvaluation</code> operation to verify that the status of the <code>Evaluation</code> changed to <code>DELETED</code>.</p> <caution><title>Caution</title> <p>The results of the <code>DeleteEvaluation</code> operation are irreversible.</p></caution>",
-            "description": "<p>Assigns the <code>DELETED</code> status to an <code>Evaluation</code>, rendering it unusable.</p> <p>After invoking the <code>DeleteEvaluation</code> operation, you can use the <code>GetEvaluation</code> operation to verify that the status of the <code>Evaluation</code> changed to <code>DELETED</code>.</p> <caution><title>Caution</title> <p>The results of the <code>DeleteEvaluation</code> operation are irreversible.</p></caution>",
+            "title": "DeleteEvaluation",
+            "description": "Assigns the DELETED status to an Evaluation, rendering it unusable.\n\nAfter invoking the DeleteEvaluation operation, you can use the GetEvaluation \noperation to verify that the status of the Evaluation changed to DELETED.\n\nCaution The results of the DeleteEvaluation operation are irreversible.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -225,8 +225,8 @@
         },
         "DeleteMLModel": {
             "main": "./lib/actions/DeleteMLModel.js",
-            "title": "<p>Assigns the <code>DELETED</code> status to an <code>MLModel</code>, rendering it unusable.</p> <p>After using the <code>DeleteMLModel</code> operation, you can use the <code>GetMLModel</code> operation to verify that the status of the <code>MLModel</code> changed to DELETED.</p> <p><b>Caution:</b> The result of the <code>DeleteMLModel</code> operation is irreversible.</p>",
-            "description": "<p>Assigns the <code>DELETED</code> status to an <code>MLModel</code>, rendering it unusable.</p> <p>After using the <code>DeleteMLModel</code> operation, you can use the <code>GetMLModel</code> operation to verify that the status of the <code>MLModel</code> changed to DELETED.</p> <p><b>Caution:</b> The result of the <code>DeleteMLModel</code> operation is irreversible.</p>",
+            "title": "DeleteMLModel",
+            "description": "Assigns the DELETED status to an MLModel, rendering it unusable.\n\nAfter using the DeleteMLModel operation, you can use the GetMLModel operation to\nverify that the status of the MLModel changed to DELETED.\n\nCaution: The result of the DeleteMLModel operation is irreversible.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -242,7 +242,7 @@
         },
         "DeleteRealtimeEndpoint": {
             "main": "./lib/actions/DeleteRealtimeEndpoint.js",
-            "title": "Deletes a real time endpoint of an <code>MLModel</code>.",
+            "title": "DeleteRealtimeEndpoint",
             "description": "Deletes a real time endpoint of an <code>MLModel</code>.",
             "fields": {
                 "verbose": {
@@ -259,8 +259,8 @@
         },
         "DeleteTags": {
             "main": "./lib/actions/DeleteTags.js",
-            "title": "<p>Deletes the specified tags associated with an ML object. After this operation is complete, you can't recover deleted tags.</p> <p>If you specify a tag that doesn't exist, Amazon ML ignores it.</p>",
-            "description": "<p>Deletes the specified tags associated with an ML object. After this operation is complete, you can't recover deleted tags.</p> <p>If you specify a tag that doesn't exist, Amazon ML ignores it.</p>",
+            "title": "DeleteTags",
+            "description": "Deletes the specified tags associated with an ML object. After this operation is\ncomplete, you can't recover deleted tags.\n\nIf you specify a tag that doesn't exist, Amazon ML ignores it.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -276,7 +276,7 @@
         },
         "DescribeBatchPredictions": {
             "main": "./lib/actions/DescribeBatchPredictions.js",
-            "title": "Returns a list of <code>BatchPrediction</code> operations that match the search criteria in the request.",
+            "title": "DescribeBatchPredictions",
             "description": "Returns a list of <code>BatchPrediction</code> operations that match the search criteria in the request.",
             "fields": {
                 "verbose": {
@@ -293,7 +293,7 @@
         },
         "DescribeDataSources": {
             "main": "./lib/actions/DescribeDataSources.js",
-            "title": "Returns a list of <code>DataSource</code> that match the search criteria in the request.",
+            "title": "DescribeDataSources",
             "description": "Returns a list of <code>DataSource</code> that match the search criteria in the request.",
             "fields": {
                 "verbose": {
@@ -310,7 +310,7 @@
         },
         "DescribeEvaluations": {
             "main": "./lib/actions/DescribeEvaluations.js",
-            "title": "Returns a list of <code>DescribeEvaluations</code> that match the search criteria in the request.",
+            "title": "DescribeEvaluations",
             "description": "Returns a list of <code>DescribeEvaluations</code> that match the search criteria in the request.",
             "fields": {
                 "verbose": {
@@ -327,7 +327,7 @@
         },
         "DescribeMLModels": {
             "main": "./lib/actions/DescribeMLModels.js",
-            "title": "Returns a list of <code>MLModel</code> that match the search criteria in the request.",
+            "title": "DescribeMLModels",
             "description": "Returns a list of <code>MLModel</code> that match the search criteria in the request.",
             "fields": {
                 "verbose": {
@@ -344,7 +344,7 @@
         },
         "DescribeTags": {
             "main": "./lib/actions/DescribeTags.js",
-            "title": "Describes one or more of the tags for your Amazon ML object.",
+            "title": "DescribeTags",
             "description": "Describes one or more of the tags for your Amazon ML object.",
             "fields": {
                 "verbose": {
@@ -361,7 +361,7 @@
         },
         "GetBatchPrediction": {
             "main": "./lib/actions/GetBatchPrediction.js",
-            "title": "Returns a <code>BatchPrediction</code> that includes detailed metadata, status, and data file information for a <code>Batch Prediction</code> request.",
+            "title": "GetBatchPrediction",
             "description": "Returns a <code>BatchPrediction</code> that includes detailed metadata, status, and data file information for a <code>Batch Prediction</code> request.",
             "fields": {
                 "verbose": {
@@ -378,8 +378,8 @@
         },
         "GetDataSource": {
             "main": "./lib/actions/GetDataSource.js",
-            "title": "<p>Returns a <code>DataSource</code> that includes metadata and data file information, as well as the current status of the <code>DataSource</code>.</p> <p><code>GetDataSource</code> provides results in normal or verbose format. The verbose format adds the schema description and the list of files pointed to by the DataSource to the normal format.</p>",
-            "description": "<p>Returns a <code>DataSource</code> that includes metadata and data file information, as well as the current status of the <code>DataSource</code>.</p> <p><code>GetDataSource</code> provides results in normal or verbose format. The verbose format adds the schema description and the list of files pointed to by the DataSource to the normal format.</p>",
+            "title": "GetDataSource",
+            "description": "Returns a DataSource that includes metadata and data file information, as well\nas the current status of the DataSource.\n\nGetDataSource provides results in normal or verbose format. The verbose format\nadds the schema description and the list of files pointed to by the DataSource\nto the normal format.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -395,7 +395,7 @@
         },
         "GetEvaluation": {
             "main": "./lib/actions/GetEvaluation.js",
-            "title": "Returns an <code>Evaluation</code> that includes metadata as well as the current status of the <code>Evaluation</code>.",
+            "title": "GetEvaluation",
             "description": "Returns an <code>Evaluation</code> that includes metadata as well as the current status of the <code>Evaluation</code>.",
             "fields": {
                 "verbose": {
@@ -412,8 +412,8 @@
         },
         "GetMLModel": {
             "main": "./lib/actions/GetMLModel.js",
-            "title": "<p>Returns an <code>MLModel</code> that includes detailed metadata, data source information, and the current status of the <code>MLModel</code>.</p> <p><code>GetMLModel</code> provides results in normal or verbose format. </p>",
-            "description": "<p>Returns an <code>MLModel</code> that includes detailed metadata, data source information, and the current status of the <code>MLModel</code>.</p> <p><code>GetMLModel</code> provides results in normal or verbose format. </p>",
+            "title": "GetMLModel",
+            "description": "Returns an MLModel that includes detailed metadata, data source information, and\nthe current status of the MLModel.\n\nGetMLModel provides results in normal or verbose format.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -429,8 +429,8 @@
         },
         "Predict": {
             "main": "./lib/actions/Predict.js",
-            "title": "<p>Generates a prediction for the observation using the specified <code>ML Model</code>.</p> <note><title>Note</title> <p>Not all response parameters will be populated. Whether a response parameter is populated depends on the type of model requested.</p></note>",
-            "description": "<p>Generates a prediction for the observation using the specified <code>ML Model</code>.</p> <note><title>Note</title> <p>Not all response parameters will be populated. Whether a response parameter is populated depends on the type of model requested.</p></note>",
+            "title": "Predict",
+            "description": "Generates a prediction for the observation using the specified ML Model.\n\nNote Not all response parameters will be populated. Whether a response parameter\nis populated depends on the type of model requested.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -446,8 +446,8 @@
         },
         "UpdateBatchPrediction": {
             "main": "./lib/actions/UpdateBatchPrediction.js",
-            "title": "<p>Updates the <code>BatchPredictionName</code> of a <code>BatchPrediction</code>.</p> <p>You can use the <code>GetBatchPrediction</code> operation to view the contents of the updated data element.</p>",
-            "description": "<p>Updates the <code>BatchPredictionName</code> of a <code>BatchPrediction</code>.</p> <p>You can use the <code>GetBatchPrediction</code> operation to view the contents of the updated data element.</p>",
+            "title": "UpdateBatchPrediction",
+            "description": "Updates the BatchPredictionName of a BatchPrediction.\n\nYou can use the GetBatchPrediction operation to view the contents of the updated\ndata element.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -463,8 +463,8 @@
         },
         "UpdateDataSource": {
             "main": "./lib/actions/UpdateDataSource.js",
-            "title": "<p>Updates the <code>DataSourceName</code> of a <code>DataSource</code>.</p> <p>You can use the <code>GetDataSource</code> operation to view the contents of the updated data element.</p>",
-            "description": "<p>Updates the <code>DataSourceName</code> of a <code>DataSource</code>.</p> <p>You can use the <code>GetDataSource</code> operation to view the contents of the updated data element.</p>",
+            "title": "UpdateDataSource",
+            "description": "Updates the DataSourceName of a DataSource.\n\nYou can use the GetDataSource operation to view the contents of the updated data\nelement.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -480,8 +480,8 @@
         },
         "UpdateEvaluation": {
             "main": "./lib/actions/UpdateEvaluation.js",
-            "title": "<p>Updates the <code>EvaluationName</code> of an <code>Evaluation</code>.</p> <p>You can use the <code>GetEvaluation</code> operation to view the contents of the updated data element.</p>",
-            "description": "<p>Updates the <code>EvaluationName</code> of an <code>Evaluation</code>.</p> <p>You can use the <code>GetEvaluation</code> operation to view the contents of the updated data element.</p>",
+            "title": "UpdateEvaluation",
+            "description": "Updates the EvaluationName of an Evaluation.\n\nYou can use the GetEvaluation operation to view the contents of the updated data\nelement.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
@@ -497,8 +497,8 @@
         },
         "UpdateMLModel": {
             "main": "./lib/actions/UpdateMLModel.js",
-            "title": "<p>Updates the <code>MLModelName</code> and the <code>ScoreThreshold</code> of an <code>MLModel</code>.</p> <p>You can use the <code>GetMLModel</code> operation to view the contents of the updated data element.</p>",
-            "description": "<p>Updates the <code>MLModelName</code> and the <code>ScoreThreshold</code> of an <code>MLModel</code>.</p> <p>You can use the <code>GetMLModel</code> operation to view the contents of the updated data element.</p>",
+            "title": "UpdateMLModel",
+            "description": "Updates the MLModelName and the ScoreThreshold of an MLModel.\n\nYou can use the GetMLModel operation to view the contents of the updated data\nelement.",
             "fields": {
                 "verbose": {
                     "viewClass": "CheckBoxView",
